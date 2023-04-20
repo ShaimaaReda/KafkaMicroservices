@@ -4,28 +4,7 @@ const queueMessage = require('../producer');
 
 // CRUD Controllers
 
-//get all Offers
-// exports.getOffers = (req, res, next) => {
-//   Offer.findAll()
-//     .then(offers => {
-//       res.status(200).json({ offers: offers });
-//     })
-//     .catch(err => console.log(err));
-// }
 
-// //get Offer by id
-// exports.getOffer = (req, res, next) => {
-//   const OfferId = req.params.OfferId;
-//   Offer.findByPk(OfferId)
-//     .then(offer => {
-//       if (!offer) {
-//         return res.status(404).json({ message: 'Offer not found!' });
-//       }
-//       return res.status(200).json({ offer: offer });
-//     })
-//     .catch(err => console.log(err));
-// }
-//------------------------------------------------------------------
 //create Offer
 exports.createOffer = (req, res, next) => {
 
@@ -36,8 +15,8 @@ exports.createOffer = (req, res, next) => {
     req.body.endDate,
     "create"
   );
-    
-  queueMessage( offerDto );
+
+  queueMessage(offerDto);
 
   return res.status(200).json({ type: 'Offer Created' });
 }
@@ -56,10 +35,10 @@ exports.updateOffer = (req, res, next) => {
           req.body.item,
           req.body.amount,
           req.body.endDate,
-           "update",
+          "update",
         );
 
-        queueMessage(offerDto );
+        queueMessage(offerDto);
 
         return res.status(200).json({ type: 'Offer Updated' });
       }
@@ -84,7 +63,7 @@ exports.deleteOffer = (req, res, next) => {
           "delete"
         );
 
-        queueMessage( offerDto );
+        queueMessage(offerDto);
 
         return res.status(404).json({ type: 'Offer Deleted' });
       }

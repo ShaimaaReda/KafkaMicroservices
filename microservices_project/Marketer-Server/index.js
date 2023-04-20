@@ -6,9 +6,6 @@ const sequelize = require('./util/database');
 
 const offerRoute = require('./routes/routes');
 
-const consumer = require('../Customer-Server/consumer');
-
-
 const app = express();
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: false }));
